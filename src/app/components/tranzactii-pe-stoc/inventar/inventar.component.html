@@ -1,0 +1,238 @@
+<h2>Inventar</h2>
+
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-3">
+      <div class="frame-input">
+          <span class="text-el">
+            Data inventarului
+          </span>
+        <span class="val">
+            <p-calendar
+              [(ngModel)]="dateValue"
+              dateFormat="dd/mm/yy"
+              placeholder="dd/mm/yyyy"
+              class="p-inputtext-sm"
+              [style]="{'margin-left': '10px'}"
+            ></p-calendar>
+          </span>
+      </div>
+    </div>
+
+    <div class="p-col-3">
+      <div class="frame-input">
+          <span class="text-el">
+            Gestiune
+          </span>
+        <span class="val">
+            <p-dropdown
+              id="float-input-gestiune"
+              [options]="gestiune"
+              optionLabel="name"
+              [filter]="false"
+              [emptyFilterMessage]
+              appendTo="body"
+              [autoDisplayFirst]="false"
+              [showClear]="false"
+              class="p-inputtext-sm gestiune-input-text"
+              [style]="{'width': '250px'}"
+            ></p-dropdown>
+          </span>
+      </div>
+    </div>
+
+    <div class="p-col-3">
+      <div class="frame-input">
+          <span class="text-el">
+            Scurta descriere
+          </span>
+        <span class="val">
+          <input
+            type="text"
+            pInputText
+            class="p-inputtext-sm tva-input-text"
+          >
+        </span>
+      </div>
+    </div>
+
+    <div class="p-col-3">
+      <div class="frame-input">
+          <span class="text-el">
+            Nr. Doc
+          </span>
+        <span class="val">
+            <input
+              type="text"
+              pInputText
+              class="p-inputtext-sm tva-input-text"
+            >
+          </span>
+      </div>
+    </div>
+  </div>
+
+  <p-divider></p-divider>
+
+  <form [formGroup]="inventarForm" (ngSubmit)="onSubmit()">
+    <div class="p-grid adaugare-factura-input">
+      <div class="p-col-12">
+
+        <div class="frame-factura">
+          <span class="p-float-label den-input">
+            <p-dropdown
+              id="float-input-denumireProdServ"
+              [options]="produseServicii"
+              [(ngModel)]="selectedProduseServicii"
+              optionLabel="denumireProdus"
+              [filter]="true"
+              [emptyFilterMessage]
+              appendTo="body"
+              [autoDisplayFirst]="false"
+              [showClear]="true"
+              [editable]="false"
+              class="p-inputtext-sm denumireProdServ-dropdown"
+              [style]="{'width': '800px'}"
+              formControlName="denumireProdusServiciu"
+            ></p-dropdown>
+            <label for="float-input-denumireProdServ" class="val-factura">Denumire produs</label>
+          </span>
+        </div>
+
+        <div class="frame-factura">
+          <span class="p-float-label um-input">
+            <p-dropdown
+              id="float-input-um"
+              [options]="um"
+              optionLabel="name"
+              [filter]="false"
+              [emptyFilterMessage]
+              appendTo="body"
+              [autoDisplayFirst]="false"
+              [showClear]="false"
+              formControlName="um"
+              [style]="{'width': '200px'}"
+              class="p-inputtext-sm um-input-text"
+            ></p-dropdown>
+            <label for="float-input-um" class="val-factura">U.M.</label>
+          </span>
+        </div>
+
+        <div class="frame-factura">
+          <span class="p-float-label cantitate-input">
+            <input
+              id="float-input-cantitate"
+              type="number"
+              pInputText
+              class="p-inputtext-sm cantitate-input-text"
+              formControlName="cantitateAjustata"
+            >
+              <label for="float-input-cantitate" class="val-factura">Cantitate faptica</label>
+          </span>
+        </div>
+
+        <button
+          pButton
+          type="button"
+          class="p-button-sm val-button"
+          icon="pi pi-save"
+          label="Adauga"
+          (click)="onSubmit()"
+        ></button>
+      </div>
+    </div>
+  </form>
+
+  <p-table [value]="inventarProducts" [columns]="cols" id="myTable" [scrollable]="true" scrollHeight="310px" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData">
+        <td *ngFor="let col of columns">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8" style="text-align: center; height: 80px">Adauga produse pe inventar completand datele de mai sus.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-divider></p-divider>
+
+  <div class="p-grid">
+    <div class="p-col-4">
+      <div class="frame-input">
+          <span class="text-el">
+            Presedintele comisiei
+          </span>
+        <span class="val">
+            <input
+              type="text"
+              pInputText
+              class="p-inputtext-sm"
+            >
+          </span>
+      </div>
+
+      <div class="frame-input">
+          <span class="text-el">
+            Membrii comisiei
+          </span>
+        <span class="val">
+            <textarea
+              [rows]="3"
+              [cols]="30"
+              pInputTextarea
+            ></textarea>
+          </span>
+      </div>
+    </div>
+
+    <div class="p-col-4">
+      <div class="frame-input">
+          <span class="text-el">
+            Gestionar
+          </span>
+        <span class="val">
+            <input
+              type="text"
+              pInputText
+              class="p-inputtext-sm"
+            >
+          </span>
+      </div>
+
+      <div class="frame-input">
+          <span class="text-el">
+            Contabilitate
+          </span>
+        <span class="val">
+            <textarea
+              [rows]="3"
+              [cols]="30"
+              pInputTextarea
+            ></textarea>
+          </span>
+      </div>
+    </div>
+
+    <div class="p-col-4">
+      <button
+        pButton
+        type="button"
+        class="p-button val-button"
+        icon="pi pi-save"
+        label="Spre salvare Inventar"
+      ></button>
+    </div>
+  </div>
+
+</p-card>

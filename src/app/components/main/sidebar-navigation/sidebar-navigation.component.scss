@@ -1,0 +1,36 @@
+.sidebar-menu{
+  background-color: #1F75FE;
+  height: 100%;
+  width: 250px;
+}
+
+h1{
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.buxttonStyleMenu{
+  .p-button{
+    width: 100%;
+    text-align: left;
+    background: #1F75FE;
+    border: 0;
+  }
+}
+.p-button:focus{
+  box-shadow: none;
+}
+
+.sidebarMenuText {
+  &:hover{
+    font-weight: bold;
+  }
+  text-decoration: none;
+  color: black;
+}
+
+.sidebar-submenu--custom{
+  .p-sidebar-active{
+    left: 219px;
+  }
+}

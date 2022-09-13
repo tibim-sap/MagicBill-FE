@@ -1,0 +1,100 @@
+<h2>Incasari si plati</h2>
+
+<p-card>
+  <form [formGroup]="incasareForm">
+    <div class="p-grid">
+      <div class="p-col-6">
+        <div class="frame-incasare">
+            <span class="text-el">
+              Tip document
+            </span>
+            <span class="incasare-input">
+              <p-dropdown
+                [options]="tipDocument"
+                optionLabel="name"
+                [filter]="false"
+                [emptyFilterMessage]
+                appendTo="body"
+                [autoDisplayFirst]="false"
+                [showClear]="false"
+                formControlName="tipDocument"
+                class="p-inputtext-sm incasare-drop-input-text"
+              ></p-dropdown>
+          </span>
+        </div>
+
+        <div class="frame-incasare">
+            <span class="text-el">
+            Numar
+            </span>
+          <span class="incasare-input">
+              <input
+                type="text"
+                pInputText
+                class="p-inputtext-sm incasare-input-text"
+              >
+            </span>
+        </div>
+        <div class="frame-incasare">
+            <span class="text-el">
+            Data emiterii
+            </span>
+          <span class="incasare-input">
+              <input
+                type="text"
+                pInputText class="p-inputtext-sm incasare-input-text"
+              >
+            </span>
+        </div>
+        <div class="frame-incasare">
+            <span class="text-el">
+            Valoare
+            </span>
+          <span class="incasare-input">
+              <input
+                type="text"
+                pInputText class="p-inputtext-sm incasare-input-text"
+              >
+            </span>
+        </div>
+        <hr>
+        <div class="frame-incasare">
+            <span class="text-el">
+            Reprezentand
+            </span>
+          <span class="incasare-input">
+              <input
+                type="text"
+                pInputText class="p-inputtext-sm incasare-input-text"
+              >
+            </span>
+        </div>
+      </div>
+      <div class="p-col-6">
+        <div class="frame-incasare">
+            <span class="text-el">
+            Moneda
+            </span>
+          <span class="incasare-input">
+              <input
+                type="text"
+                pInputText class="p-inputtext-sm incasare-input-text"
+              >
+            </span>
+        </div>
+<!--        <div class="frame-incasare">-->
+          <p-button
+            class="val-button"
+            icon="pi pi-save"
+            label="Adauga">
+          </p-button>
+<!--        </div>-->
+
+<!--          (onClick)="onSubmit()"-->
+
+
+      </div>
+    </div>
+  </form>
+
+</p-card>

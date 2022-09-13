@@ -1,0 +1,56 @@
+.frame-tabel-cheltuiala{
+  display: inline-flex;
+  align-items: center;
+}
+
+.frame-input {
+  display: flex;
+  align-items: center;
+}
+
+.text-el-factura, .val-factura{
+  //padding: 5px 15px 5px 10px;
+  font-size: 14px;
+}
+
+.text-el, .val {
+  padding: 5px 15px 5px 10px;
+}
+.text-el {
+  width: 30%;
+  font-size: 14px;
+}
+.val {
+  width: 70%;
+}
+
+.ui-dropdown{
+  width: 150px;
+}
+
+// Adaugare produse in tabelul de cheltuieli
+.den-input{
+  .den-input-text{
+    width: 450px;
+  }
+  margin-left: 10px;
+}
+
+.categorie-input{
+  .categorie-input-text{
+    width: 200px;
+  }
+  margin-left: 10px;
+}
+
+.valoare-input{
+  .valoare-input-text{
+    width: 150px;
+  }
+  margin-left: 10px;
+}
+
+.adaugare-cheltuiala-input{
+  margin-top: 12px;
+  margin-bottom: 12px;
+}

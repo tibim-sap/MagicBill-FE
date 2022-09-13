@@ -1,0 +1,179 @@
+<h2>Cheltuiala</h2>
+
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-4">
+      <div class="frame-input">
+        <span class="text-el">
+          Nume sau CIF furnizor
+        </span>
+        <span class="val">
+        <p-dropdown [options]="moneda" [(ngModel)]="selectedMoneda"
+                    optionLabel="name" [filter]="false" [emptyFilterMessage] appendTo="body"
+                    [autoDisplayFirst]="false" [showClear]="false" class="p-inputtext-sm">
+        </p-dropdown>
+        </span>
+      </div>
+    </div>
+
+    <div class="p-col-4">
+      <div class="frame-input">
+        <span class="text-el">
+          Document
+        </span>
+        <span class="val">
+        <p-dropdown
+          [options]="tipDocument"
+          optionLabel="name"
+          [filter]="false"
+          [emptyFilterMessage]
+          appendTo="body"
+          [autoDisplayFirst]="false"
+          [showClear]="false"
+          class="p-inputtext-sm ">
+        </p-dropdown>
+        </span>
+      </div>
+
+      <div class="frame-input">
+        <span class="text-el">
+          Nr. doc.
+        </span>
+        <span class="val">
+        <input
+          type="text"
+          pInputText
+          class="p-inputtext-sm">
+        </span>
+      </div>
+
+      <div class="frame-input">
+        <span class="text-el">
+          Moneda
+        </span>
+        <span class="val">
+        <p-dropdown
+          [options]="moneda"
+          optionLabel="name"
+          [filter]="false"
+          [emptyFilterMessage]
+          appendTo="body"
+          [autoDisplayFirst]="false"
+          [showClear]="false"
+          class="p-inputtext-sm">
+        </p-dropdown>
+        </span>
+      </div>
+    </div>
+
+    <div class="p-col-4">
+      <div class="frame-input">
+        <span class="text-el">
+          Data doc.
+        </span>
+        <span class="val">
+          <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy" placeholder="dd/mm/yyyy" class="p-inputtext-sm"></p-calendar>
+        </span>
+      </div>
+
+      <div class="frame-input">
+        <span class="text-el">
+          Scadenta
+        </span>
+        <span class="val">
+          <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy" placeholder="dd/mm/yyyy" class="p-inputtext-sm"></p-calendar>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <p-divider></p-divider>
+
+  <form [formGroup]="cheltuialaForm" (ngSubmit)="onSubmit()">
+    <div class="p-grid adaugare-cheltuiala-input">
+      <div class="p-col-12">
+
+        <div class="frame-tabel-cheltuiala">
+          <span class="p-float-label categorie-input">
+              <p-dropdown
+                id="float-input-categorie"
+                [options]="categorieCheltuiala"
+                optionLabel="name"
+                [filter]="false"
+                [emptyFilterMessage]
+                appendTo="body"
+                [autoDisplayFirst]="false"
+                [showClear]="false"
+                formControlName="categorie"
+                class="p-inputtext-sm categorie-input-text"
+              ></p-dropdown>
+              <label for="float-input-categorie" class="val-factura">Categoria</label>
+          </span>
+        </div>
+
+        <div class="frame-tabel-cheltuiala">
+          <span class="p-float-label den-input">
+              <input
+                id="float-input-denumireProdServ"
+                type="text"
+                pInputText
+                class="p-inputtext-sm den-input-text"
+                formControlName="denumireProdusServiciu">
+              <label for="float-input-denumireProdServ" class="val-factura">Denumire produs/serviciu</label>
+          </span>
+        </div>
+
+        <div class="frame-tabel-cheltuiala">
+          <span class="p-float-label valoare-input">
+            <input
+              id="float-input-valoare"
+              type="number"
+              pInputText class="p-inputtext-sm valoare-input-text"
+              formControlName="valoare"
+            >
+            <label for="float-input-valoare" class="val-factura">Valoare</label>
+          </span>
+        </div>
+
+        <p-button
+          class="val-button"
+          icon="pi pi-save"
+          label="Adauga"
+          (onClick)="onSubmit()"
+        ></p-button>
+      </div>
+    </div>
+  </form>
+
+  <p-table [value]="products" [columns]="cols" id="myTable" [scrollable]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th style="width:70px">Nr. Crt</th>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-product>
+      <tr [pSelectableRow]="rowData">
+        <td style="width:70px; text-align: center">{{products.indexOf(product) + 1}}</td>
+        <td *ngFor="let col of columns">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8" style="text-align: center; height: 80px">Adauga cheltuieli completand datele de mai sus.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-button
+    class="p-button-warning p-mr-2"
+    pTooltip="PDF"
+    tooltipPosition="bottom"
+    icon="pi pi-file-pdf"
+    label="Salveaza cheltuiala"
+  ></p-button>
+</p-card>

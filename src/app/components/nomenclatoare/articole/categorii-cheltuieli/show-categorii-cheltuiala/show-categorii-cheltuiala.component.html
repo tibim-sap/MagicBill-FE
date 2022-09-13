@@ -1,0 +1,63 @@
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn btn-primary float-right m-2"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+  (click)="addClick()"
+  data-backdrop="static"
+  data-keyboard="false"
+>Adauga categorie</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-categorii-cheltuiala [catChelt]="catChelt" *ngIf="ActivateAddEditCatCheltComp"></app-add-edit-categorii-cheltuiala>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Tabel-->
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Categorie</th>
+    <th>Denumire cheltuiala</th>
+    <th>Detalii</th>
+    <th>Actiuni</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let dataItem of CatCheltList">
+    <td>{{dataItem.CategorieParinte}}</td>
+    <td>{{dataItem.DenumireCategorie}}</td>
+    <td>{{dataItem.Descriere}}</td>
+    <td>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-pencil"
+        class="p-button-rounded p-button-success p-mr-2"
+        (click)="editClick(dataItem)"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      ></button>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-trash"
+        class="p-button-rounded p-button-warning"
+        (click)="deleteClick(dataItem)"
+      ></button>
+    </td>
+  </tr>
+  </tbody>
+</table>

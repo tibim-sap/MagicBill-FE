@@ -1,0 +1,108 @@
+.frame-input {
+  display: flex;
+  align-items: center;
+}
+
+.frame-factura{
+  display: inline-flex;
+  align-items: center;
+}
+
+.text-el-factura, .val-factura{
+  //padding: 5px 15px 5px 10px;
+  font-size: 14px;
+}
+
+.text-el, .val {
+  padding: 5px 15px 5px 10px;
+}
+.text-el {
+  width: 30%;
+  font-size: 14px;
+}
+.val {
+  width: 70%;
+}
+.tabel-header{
+  font-size: 14px;
+}
+
+.val-button{
+  float: right;
+}
+
+// Adaugare produse in tabelul de facturare
+.den-input{
+  .den-input-text{
+    width: 450px;
+  }
+  margin-left: 10px;
+}
+
+.cantitate-input{
+  .cantitate-input-text{
+    width: 100px;
+  }
+  margin-left: 10px;
+}
+
+.um-input{
+  .um-input-text{
+    width: 75px;
+  }
+  margin-left: 10px;
+}
+
+.pret-input{
+  .pret-input-text{
+    width: 100px;
+  }
+  margin-left: 10px;
+}
+
+.gestiune-input{
+  .gestiune-input-text{
+    width: 250px;
+  }
+  margin-left: 10px;
+}
+
+.tva-input{
+  .tva-input-text{
+    width: 100px;
+  }
+  margin-left: 10px;
+}
+
+.adaugare-factura-input{
+  margin-top: 12px;
+}
+
+.total-style{
+  text-align: right;
+  margin-right: 50px;
+  margin-top: 15px;
+}
+
+.total-style{
+  .total-span{
+    float: left;
+  }
+  .total-result-span{
+  }
+  width: 350px;
+  text-align: right;
+  float: right;
+  margin: 15px 50px 17px 0;
+  font-weight: bold;
+}
+
+.detalii-client-main{
+  .detalii-client{
+    padding: 3px;
+    margin: 0;
+    font-size: 13px;
+  }
+
+  margin-left: 14px;
+}

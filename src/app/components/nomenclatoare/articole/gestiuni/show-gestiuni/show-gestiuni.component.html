@@ -1,0 +1,70 @@
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn btn-primary float-right m-2"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+  (click)="addClick()"
+  data-backdrop="static"
+  data-keyboard="false"
+>Adauga gestiune</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-gestiuni [gest]="gest" *ngIf="ActivateAddEditGestiuniComp"></app-add-edit-gestiuni>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Tabel-->
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Gestiune</th>
+    <th>Tip gestiune</th>
+    <th>Gestionar</th>
+    <th>Adresa</th>
+    <th>Localitate</th>
+    <th>Judet</th>
+    <th>Tara</th>
+    <th>Actiuni</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let dataItem of GestiuniList">
+    <td>{{dataItem.denumireGestiune}}</td>
+    <td>{{dataItem.tipGestiune}}</td>
+    <td>{{dataItem.gestionar}}</td>
+    <td>{{dataItem.adresa}}</td>
+    <td>{{dataItem.localitate}}</td>
+    <td>{{dataItem.judet}}</td>
+    <td>{{dataItem.tara}}</td>
+    <td>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-pencil"
+        class="p-button-rounded p-button-success p-mr-2"
+        (click)="editClick(dataItem)"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      ></button>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-trash"
+        class="p-button-rounded p-button-warning"
+        (click)="deleteClick(dataItem)"
+      ></button>
+    </td>
+  </tr>
+  </tbody>
+</table>

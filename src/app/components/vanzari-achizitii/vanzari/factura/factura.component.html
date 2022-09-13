@@ -1,0 +1,365 @@
+<h2>Factura</h2>
+
+<p-card>
+  <div class="p-grid">
+      <div class="p-col-4">
+        <div class="frame-input">
+          <span class="text-el">
+            Nume sau CIF client
+          </span>
+          <span class="val">
+            <p-dropdown
+              [options]="clienti"
+              [(ngModel)]="selectedClient"
+              optionLabel="denumireClient"
+              [filter]="false"
+              [emptyFilterMessage]
+              appendTo="body"
+              [autoDisplayFirst]="false"
+              [showClear]="false"
+              class="p-inputtext-sm"
+              [style]="{'width': '300px'}"
+            ></p-dropdown>
+          </span>
+        </div>
+        <div class="detalii-client-main" *ngIf="selectedClient">
+          <p class="detalii-client">{{selectedClient.denumireClient}}</p>
+          <p class="detalii-client">{{selectedClient.cif}}, {{selectedClient.regCom}}</p>
+          <p class="detalii-client">{{selectedClient.localitate}}, {{selectedClient.adresa}}, {{selectedClient.judet}}, {{selectedClient.tara}}</p>
+        </div>
+      </div>
+
+    <div class="p-col-4">
+      <div class="frame-input">
+        <span class="text-el">
+          Data emiterii
+        </span>
+        <span class="val">
+          <p-calendar
+            [(ngModel)]="dateValue"
+            dateFormat="dd/mm/yy"
+            placeholder="dd/mm/yyyy"
+            class="p-inputtext-sm"
+          ></p-calendar>
+        </span>
+      </div>
+      <div class="frame-input">
+        <span class="text-el">
+          Termen de plata
+        </span>
+        <span class="val">
+          <p-dropdown
+            [options]="termenPlata"
+            [(ngModel)]="selectedTermenPlata"
+            optionLabel="name"
+            [filter]="false"
+            [emptyFilterMessage]
+            appendTo="body"
+            [autoDisplayFirst]="false"
+            [showClear]="false"
+            class="p-inputtext-sm"
+          ></p-dropdown>
+          <p-calendar
+            [(ngModel)]="dateValue"
+            dateFormat="dd/mm/yy"
+            placeholder="dd/mm/yyyy"
+            class="p-inputtext-sm"
+            [style]="{'margin-left': '10px'}"
+          ></p-calendar>
+        </span>
+      </div>
+      <div class="frame-input">
+        <span class="text-el">
+          Seria si numar
+        </span>
+        <span class="val">
+          <input
+            type="text"
+            pInputText
+            class="p-inputtext-sm">
+        </span>
+      </div>
+
+    </div>
+    <div class="p-col-4">
+      <div class="frame-input">
+        <span class="text-el">
+          Moneda factura
+        </span>
+        <span class="val">
+          <p-dropdown
+            [options]="moneda"
+            [(ngModel)]="selectedMoneda"
+            optionLabel="name"
+            [filter]="false"
+            [emptyFilterMessage]
+            appendTo="body"
+            [autoDisplayFirst]="false"
+            [showClear]="false"
+            [style]="{'width': '190px'}"
+            class="p-inputtext-sm"
+          ></p-dropdown>
+          </span>
+      </div>
+    </div>
+  </div>
+
+  <p-divider></p-divider>
+
+  <form [formGroup]="facturaForm" (ngSubmit)="onSubmit()">
+    <div class="p-grid adaugare-factura-input">
+      <div class="p-col-12">
+
+        <div class="frame-factura">
+          <span class="p-float-label gestiune-input">
+            <p-dropdown
+              id="float-input-gestiune"
+              [options]="gestiune"
+              optionLabel="name"
+              [filter]="false"
+              [emptyFilterMessage]
+              appendTo="body"
+              [autoDisplayFirst]="false"
+              [showClear]="false"
+              formControlName="gestiune"
+              class="p-inputtext-sm gestiune-input-text"
+              [style]="{'width': '150px'}"
+            ></p-dropdown>
+            <label for="float-input-gestiune" class="val-factura">Gestiune</label>
+          </span>
+        </div>
+
+        <div class="frame-factura">
+          <span class="p-float-label den-input">
+            <p-dropdown
+              id="float-input-denumireProdServ"
+              [options]="produseServicii"
+              [(ngModel)]="selectedProduseServicii"
+              optionLabel="denumireProdus"
+              [filter]="true"
+              [emptyFilterMessage]
+              appendTo="body"
+              [autoDisplayFirst]="false"
+              [showClear]="true"
+              [editable]="false"
+              class="p-inputtext-sm denumireProdServ-dropdown"
+              [style]="{'width': '600px'}"
+              formControlName="denumireProdusServiciu"
+            ></p-dropdown>
+            <label for="float-input-denumireProdServ" class="val-factura">Denumire produs/serviciu</label>
+          </span>
+        </div>
+
+        <div class="frame-factura">
+          <span class="p-float-label um-input">
+            <p-dropdown
+              id="float-input-um"
+              [options]="um"
+              optionLabel="name"
+              [filter]="false"
+              [emptyFilterMessage]
+              appendTo="body"
+              [autoDisplayFirst]="false"
+              [showClear]="false"
+              formControlName="um"
+              [style]="{'width': '120px'}"
+              class="p-inputtext-sm um-input-text"
+            ></p-dropdown>
+            <label for="float-input-um" class="val-factura">U.M.</label>
+          </span>
+        </div>
+
+        <div class="frame-factura">
+          <span class="p-float-label cantitate-input">
+            <input
+              id="float-input-cantitate"
+              type="number"
+              pInputText
+              class="p-inputtext-sm cantitate-input-text"
+              formControlName="cantitate"
+            >
+              <label for="float-input-cantitate" class="val-factura">Cantitate</label>
+          </span>
+        </div>
+
+        <div class="frame-factura">
+          <span class="p-float-label pret-input">
+            <input
+              id="float-input-pret"
+              type="number"
+              pInputText
+              class="p-inputtext-sm pret-input-text"
+              formControlName="valoare"
+              >
+            <label for="float-input-pret" class="val-factura">Pret (RON)</label>
+          </span>
+        </div>
+
+        <div class="frame-factura">
+          <span class="p-float-label tva-input">
+            <input
+              id="float-input-tva"
+              type="number"
+              pInputText
+              class="p-inputtext-sm tva-input-text"
+              formControlName="valTva"
+              prefix="RON"
+              disabled
+            >
+            <label for="float-input-tva" class="val-factura">TVA - 19%</label>
+          </span>
+        </div>
+
+        <button
+          pButton
+          type="button"
+          class="p-button-sm val-button"
+          icon="pi pi-save"
+          label="Adauga"
+          (click)="onSubmit()"
+        ></button>
+      </div>
+    </div>
+  </form>
+
+  <p-table [value]="products" [columns]="cols" id="myTable" [scrollable]="true" scrollHeight="310px" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th>Nr. Crt</th>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-product>
+      <tr [pSelectableRow]="rowData">
+        <td>{{products.indexOf(product) + 1}}</td>
+        <td *ngFor="let col of columns">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8" style="text-align: center; height: 80px">Adauga produse/servicii pe factura completand datele de mai sus.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <div class="total-style" *ngIf="calcul">
+    <span class="total-span"> Total fara TVA:</span> <span class="total-result-span"> {{calcul.totalFaraTva}}</span> <br>
+    <span class="total-span"> Total TVA:</span> <span> {{calcul.totalTva}}</span> <br>
+    <p-divider></p-divider>
+    <span class="total-span"> TOTAL:</span> <span> {{calcul.total}}</span>
+  </div>
+
+  <p-divider></p-divider>
+
+  <div class="p-grid">
+    <div class="p-col-4">
+      <div class="frame-input">
+        <span class="text-el">
+          Intocmit de
+        </span>
+        <span class="val">
+          <input
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          >
+        </span>
+      </div>
+      <div class="frame-input">
+        <span class="text-el">
+          CNP
+        </span>
+        <span class="val">
+          <input
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          >
+        </span>
+      </div>
+      <div class="frame-input">
+          <span class="text-el">
+            Aviz insotire
+          </span>
+        <span class="val">
+          <input
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          >
+        </span>
+      </div>
+    </div>
+    <div class="p-col-4">
+      <div class="frame-input">
+        <span class="text-el">
+          Delegat
+        </span>
+        <span class="val">
+          <input
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          >
+        </span>
+      </div>
+      <div class="frame-input">
+        <span class="text-el">
+          Buletin
+        </span>
+        <span class="val">
+          <input
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          >
+        </span>
+      </div>
+      <div class="frame-input">
+        <span class="text-el">
+          Auto
+        </span>
+        <span class="val">
+          <input
+            type="text"
+            pInputText
+            class="p-inputtext-sm"
+          >
+        </span>
+      </div>
+
+    </div>
+    <div class="p-col-4">
+      <div class="frame-input">
+        <span class="text-el">
+          Mentiuni
+        </span>
+        <span class="val">
+          <textarea
+            [rows]="6"
+            [cols]="30"
+            pInputTextarea
+          ></textarea>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <button
+    pButton
+    type="button"
+    class="p-button-sm p-mr-2"
+    pTooltip="PDF"
+    tooltipPosition="bottom"
+    icon="pi pi-file-pdf"
+    label="Printeaza factura"
+    (click)="exportPdf()"
+  ></button>
+</p-card>
+
+
+

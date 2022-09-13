@@ -1,0 +1,205 @@
+<!--START COMPONENTA GESTIUNE-->
+<!--<p-card>-->
+<h2>Gestiune</h2>
+
+  <p-card>
+    <app-show-gestiuni></app-show-gestiuni>
+  </p-card>
+
+  <!--START TABEL GESTIUNE-->
+<!--  <p-table [value]="products">-->
+<!--    <ng-template pTemplate="header">-->
+<!--      <tr>-->
+<!--        <th>Gestiune</th>-->
+<!--        <th>Tip gestiune</th>-->
+<!--        <th>Gestionar</th>-->
+<!--        <th>Adresa</th>-->
+<!--        <th>Localitate</th>-->
+<!--        <th>Judet</th>-->
+<!--        <th>Tara</th>-->
+<!--        <th>Actiuni</th>-->
+<!--      </tr>-->
+<!--    </ng-template>-->
+<!--    <ng-template pTemplate="body" let-product>-->
+<!--      <tr>-->
+<!--        <td>{{product.denumireGestiune}}</td>-->
+<!--        <td>{{product.tipGestiune}}</td>-->
+<!--        <td>{{product.gestionar}}</td>-->
+<!--        <td>{{product.adresa}}</td>-->
+<!--        <td>{{product.localitate}}</td>-->
+<!--        <td>{{product.judet}}</td>-->
+<!--        <td>{{product.tara}}</td>-->
+<!--        <td>-->
+<!--          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"-->
+<!--                  (click)="editProduct(product)"></button>-->
+<!--          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"-->
+<!--                  (click)="deleteProduct(product)"></button>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--    </ng-template>-->
+<!--    <ng-template pTemplate="emptymessage">-->
+<!--      <tr>-->
+<!--        <td colspan="8" style="text-align: center; height: 80px">Adauga prima ta gestiune!-->
+<!--          <br>-->
+<!--          <button pButton class="p-button-sm" label="Gestiune" icon="pi pi-plus" (click)="showDialog()"></button>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--    </ng-template>-->
+<!--  </p-table>-->
+  <!--END TABEL GESTIUNE-->
+
+  <!--START MODAL - ADAUGARE GESTIUNE-->
+<!--  <p-dialog header="Adaugare gestiune" [(visible)]="displayGestiune" [draggable]="false" [modal]="true" position="top" styleClass="p-fluid">-->
+<!--    <hr>-->
+<!--    <form [formGroup]="gestiuneForm" (ngSubmit)="onSubmit()">-->
+<!--      <div class="p-grid">-->
+<!--        <div class="p-col-12">-->
+<!--          <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--            Denumire gestiune-->
+<!--          </span>-->
+<!--            <span class="val">-->
+<!--            <input type="text" class="input-style" formControlName="denumireGestiune" pInputText>-->
+<!--          </span>-->
+<!--          </div>-->
+<!--          <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--          Tip gestiune-->
+<!--          </span>-->
+<!--            <span class="val">-->
+<!--            <input type="text" class="input-style" formControlName="tipGestiune" pInputText>-->
+<!--          </span>-->
+<!--          </div>-->
+<!--          <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--          Gestionar-->
+<!--        </span>-->
+<!--            <span class="val">-->
+<!--          <input type="text" class="input-style" formControlName="gestionar" pInputText>-->
+<!--        </span>-->
+<!--          </div>-->
+<!--          <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--          Adresa-->
+<!--        </span>-->
+<!--            <span class="val">-->
+<!--          <input type="text" class="input-style" formControlName="adresa" pInputText>-->
+<!--        </span>-->
+<!--          </div>-->
+<!--          <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--            Localitate-->
+<!--          </span>-->
+<!--            <span class="val">-->
+<!--            <input type="text" class="input-style" formControlName="localitate" pInputText>-->
+<!--          </span>-->
+<!--          </div>-->
+<!--          <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--          Judet-->
+<!--          </span>-->
+<!--            <span class="val">-->
+<!--              <p-dropdown [options]="cities" formControlName="judet" [(ngModel)]="selectedCity"-->
+<!--                          optionLabel="name" [filter]="true" [emptyFilterMessage] appendTo="body"-->
+<!--                          [autoDisplayFirst]="false" [showClear]="true"></p-dropdown>-->
+<!--          </span>-->
+<!--          </div>-->
+<!--          <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--          Tara-->
+<!--        </span>-->
+<!--            <span class="val">-->
+<!--          <input type="text" class="input-style" formControlName="tara" pInputText>-->
+<!--        </span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--    <p-footer>-->
+<!--      <p-button-->
+<!--        icon="pi pi-save"-->
+<!--        label="Adauga gestiune"-->
+<!--        (onClick)="onSubmit()"-->
+<!--      ></p-button>-->
+<!--    </p-footer>-->
+<!--  </p-dialog>-->
+  <!--END MODAL - ADAUGARE GESTIUNE-->
+<!--</p-card>-->
+
+<!--START MODAL - EDITARE CLIENT-->
+<!--<p-dialog [(visible)]="showEditDialog" header="Product Details" [draggable]="false" [modal]="true" position="top" styleClass="p-fluid">-->
+<!--<p-dialog [(visible)]="showEditDialog" header="Product Details" [draggable]="false" [modal]="true" position="top" styleClass="p-fluid">-->
+<!--  <ng-template pTemplate="editDialog">-->
+<!--    <div class="p-grid">-->
+<!--      <div class="p-col-12">-->
+<!--        <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--            Denumire gestiune-->
+<!--          </span>-->
+<!--          <span class="val">-->
+<!--            <input type="text" class="input-style" formControlName="denumireGestiune" pInputText>-->
+<!--          </span>-->
+<!--        </div>-->
+<!--        <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--          Tip gestiune-->
+<!--          </span>-->
+<!--          <span class="val">-->
+<!--            <input type="text" class="input-style" formControlName="tipGestiune" pInputText>-->
+<!--          </span>-->
+<!--        </div>-->
+<!--        <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--          Gestionar-->
+<!--        </span>-->
+<!--          <span class="val">-->
+<!--          <input type="text" class="input-style" formControlName="gestionar" pInputText>-->
+<!--        </span>-->
+<!--        </div>-->
+<!--        <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--          Adresa-->
+<!--        </span>-->
+<!--          <span class="val">-->
+<!--          <input type="text" class="input-style" formControlName="adresa" pInputText>-->
+<!--        </span>-->
+<!--        </div>-->
+<!--        <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--            Localitate-->
+<!--          </span>-->
+<!--          <span class="val">-->
+<!--            <input type="text" class="input-style" formControlName="localitate" pInputText>-->
+<!--          </span>-->
+<!--        </div>-->
+<!--        <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--          Judet-->
+<!--          </span>-->
+<!--          <span class="val">-->
+<!--              <p-dropdown [options]="cities" formControlName="judet" [(ngModel)]="selectedCity"-->
+<!--                          optionLabel="name" [filter]="true" [emptyFilterMessage] appendTo="body"-->
+<!--                          [autoDisplayFirst]="false" [showClear]="true"></p-dropdown>-->
+<!--          </span>-->
+<!--        </div>-->
+<!--        <div class="frame-input">-->
+<!--          <span class="text-el">-->
+<!--          Tara-->
+<!--        </span>-->
+<!--          <span class="val">-->
+<!--          <input type="text" class="input-style" formControlName="tara" pInputText>-->
+<!--        </span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <p-button-->
+<!--      icon="pi pi-save"-->
+<!--      label="Salveaza client"-->
+<!--      (onClick)="onSave()"-->
+<!--    ></p-button>-->
+<!--  </ng-template>-->
+<!--</p-dialog>-->
+<!--END MODAL - EDITARE CLIENT-->
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+<!--END COMPONENTA GESTIUNE-->

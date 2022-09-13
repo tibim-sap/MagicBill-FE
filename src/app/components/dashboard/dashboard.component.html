@@ -1,0 +1,34 @@
+<div class="main-wrapper-dashboard">
+  <div class="p-grid">
+    <div class="p-col-4">
+      <p-panel header="Vanzari">
+        <p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart>
+      </p-panel>
+    </div>
+    <div class="p-col-4">
+      <p-panel header="Sold Clienti">
+        <p-chart type="doughnut" [data]="data"></p-chart>
+      </p-panel>
+    </div>
+    <div class="p-col-4">
+      <p-panel header="Facturi neincasate">
+        <p-chart type="doughnut" [data]="data"></p-chart>
+      </p-panel>
+    </div>
+  </div>
+  <div class="p-grid">
+    <div class="p-col-4">
+      <p-panel header="Top produse">
+        <p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart>
+      </p-panel>
+    </div>
+    <div class="p-col-4">
+      <p-panel header="Top clienti">
+        <p-chart type="line" [data]="basicData" [options]="basicOptions"></p-chart>
+      </p-panel>
+    </div>
+  </div>
+</div>
+
+
+

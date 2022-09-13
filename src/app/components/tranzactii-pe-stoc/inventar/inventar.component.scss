@@ -1,0 +1,54 @@
+.frame-input {
+  display: flex;
+  align-items: center;
+}
+
+.frame-factura{
+  display: inline-flex;
+  align-items: center;
+}
+
+.text-el-factura, .val-factura{
+  //padding: 5px 15px 5px 10px;
+  font-size: 14px;
+}
+
+.text-el, .val {
+  padding: 5px 15px 5px 10px;
+}
+.text-el {
+  width: 30%;
+  font-size: 14px;
+}
+.val {
+  width: 70%;
+}
+
+.den-input{
+  .den-input-text{
+    width: 450px;
+  }
+  margin-left: 10px;
+}
+
+.cantitate-input{
+  .cantitate-input-text{
+    width: 200px;
+  }
+  margin-left: 10px;
+}
+
+.um-input{
+  .um-input-text{
+    width: 75px;
+  }
+  margin-left: 10px;
+}
+.adaugare-factura-input{
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.val-button{
+  float: right;
+}

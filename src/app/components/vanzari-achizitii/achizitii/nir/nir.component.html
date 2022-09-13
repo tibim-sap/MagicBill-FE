@@ -1,0 +1,350 @@
+<h2>NIR</h2>
+
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-2">
+      <div class="frame-input">
+          <span class="text-el">
+            Nume sau CIF furnizor
+          </span>
+        <span class="val">
+          <p-dropdown
+            [options]="furnizori"
+            [(ngModel)]="selectedFurnizor"
+            optionLabel="denumireFurnizor"
+            [filter]="false"
+            [emptyFilterMessage]
+            appendTo="body"
+            [autoDisplayFirst]="false"
+            [showClear]="false"
+            class="p-inputtext-sm"
+            [style]="{'width': '200px'}"
+          ></p-dropdown>
+        </span>
+      </div>
+      <div class="detalii-furnizor-main" *ngIf="selectedFurnizor">
+        <p class="detalii-furnizor">{{selectedFurnizor.denumireFurnizor}}</p>
+        <p class="detalii-furnizor">{{selectedFurnizor.cif}}, {{selectedFurnizor.regCom}}</p>
+        <p class="detalii-furnizor">{{selectedFurnizor.localitate}}, {{selectedFurnizor.adresa}}, {{selectedFurnizor.judet}}, {{selectedFurnizor.tara}}</p>
+      </div>
+    </div>
+    <div class="p-col-2">
+      <div class="frame-input">
+        <span class="text-el">
+          Doc. Justificativ
+        </span>
+        <span class="val">
+          <input type="text" pInputText>
+        </span>
+      </div>
+      <div class="frame-input">
+        <span class="text-el">
+          Valoare
+        </span>
+        <span class="val">
+          <input type="text" pInputText>
+        </span>
+      </div>
+    </div>
+    <div class="p-col-2">
+      <div class="frame-input">
+          <span class="text-el">
+            Nr. doc
+          </span>
+        <span class="val">
+          <input type="text" pInputText>
+        </span>
+      </div>
+      <div class="frame-input">
+          <span class="text-el">
+            Valoare TVA
+          </span>
+        <span class="val">
+          <input type="text" pInputText>
+        </span>
+      </div>
+      <div class="frame-input">
+          <span class="text-el">
+            Serie Receptie
+          </span>
+        <span class="val">
+          <input type="text" pInputText>
+        </span>
+      </div>
+    </div>
+    <div class="p-col-2">
+      <div class="frame-input">
+          <span class="text-el">
+            Data doc.
+          </span>
+        <span class="val">
+          <input type="text" pInputText>
+        </span>
+      </div>
+      <div class="frame-input">
+          <span class="text-el">
+            Data scandetei
+          </span>
+        <span class="val">
+          <input type="text" pInputText>
+        </span>
+      </div>
+      <div class="frame-input">
+          <span class="text-el">
+            Data intrarii in stoc
+          </span>
+        <span class="val">
+          <input type="text" pInputText>
+        </span>
+      </div>
+    </div>
+    <div class="p-col-4">
+      <div class="frame-input">
+          <span class="text-el">
+            Moneda receptie
+          </span>
+        <span class="val">
+          <input type="text" pInputText>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <p-divider></p-divider>
+
+  <form [formGroup]="nirForm" (ngSubmit)="onSubmit()">
+    <div class="p-grid adaugare-nir-input">
+    <div class="p-col-12">
+      <div class="frame-nir">
+          <span class="p-float-label gestiune-input">
+              <p-dropdown
+                id="float-input-gestiune"
+                [options]="gestiune"
+                optionLabel="name"
+                [filter]="false"
+                [emptyFilterMessage]
+                appendTo="body"
+                [autoDisplayFirst]="false"
+                [showClear]="false"
+                formControlName="gestiune"
+                class="p-inputtext-sm gestiune-input-text"
+                [style]="{'width': '150px'}"
+              ></p-dropdown>
+              <label for="float-input-gestiune" class="val-factura">Gestiune</label>
+          </span>
+      </div>
+
+      <div class="frame-nir">
+          <span class="p-float-label den-input">
+              <p-dropdown
+                id="float-input-denumireProdServ"
+                [options]="produseServicii"
+                [(ngModel)]="selectedProduseServicii"
+                optionLabel="denumireProdus"
+                [filter]="true"
+                [emptyFilterMessage]
+                appendTo="body"
+                [autoDisplayFirst]="false"
+                [showClear]="true"
+                [editable]="false"
+                class="p-inputtext-sm denumireProdServ-dropdown"
+                [style]="{'width': '500px'}"
+                formControlName="denumireProdusServiciu"
+              ></p-dropdown>
+              <label for="float-input-denumireProdServ" class="val-factura">Denumire produs/serviciu</label>
+          </span>
+      </div>
+
+      <div class="frame-nir">
+          <span class="p-float-label tip-input">
+              <p-dropdown
+                id="float-input-tip"
+                [options]="tipProdus"
+                [(ngModel)]="selectedTipProdus"
+                optionLabel="name"
+                [filter]="false"
+                [emptyFilterMessage]
+                appendTo="body"
+                [autoDisplayFirst]="false"
+                [showClear]="false"
+                formControlName="tipProdus"
+                class="p-inputtext-sm tip-input-text"
+                [style]="{'width': '105px'}"
+              ></p-dropdown>
+              <label for="float-input-um" class="val-factura">Tip</label>
+          </span>
+      </div>
+
+      <div class="frame-nir">
+          <span class="p-float-label um-input">
+              <p-dropdown
+                id="float-input-um"
+                [options]="um"
+                optionLabel="name"
+                [filter]="false"
+                [emptyFilterMessage]
+                appendTo="body"
+                [autoDisplayFirst]="false"
+                [showClear]="false"
+                formControlName="um"
+                class="p-inputtext-sm um-input-text"
+                [style]="{'width': '120px'}"
+              ></p-dropdown>
+              <label for="float-input-um" class="val-factura">U.M.</label>
+          </span>
+      </div>
+
+      <div class="frame-nir">
+          <span class="p-float-label cantDoc-input">
+            <input
+              id="float-input-cantDoc"
+              type="number"
+              pInputText class="p-inputtext-sm cantDoc-input-text"
+              formControlName="cantDoc"
+            >
+              <label for="float-input-cantDoc" class="val-factura">Cant. doc.</label>
+          </span>
+      </div>
+
+      <div class="frame-nir">
+          <span class="p-float-label cant-primita-input">
+            <input
+              id="float-input-cant-primita"
+              type="number"
+              pInputText class="p-inputtext-sm cant-primita-input-text"
+              formControlName="cantPrimita"
+            >
+              <label for="float-input-cant-primita" class="val-factura">Cant. primita</label>
+          </span>
+      </div>
+
+      <div class="frame-nir">
+          <span class="p-float-label pret-achizitie-input">
+            <input
+              id="float-input-pret-achizitie"
+              type="number"
+              pInputText class="p-inputtext-sm pret-achizitie-input-text"
+              formControlName="pretAchizitie"
+            >
+            <label for="float-input-pret-achizitie" class="val-factura">Pret achizitie</label>
+          </span>
+      </div>
+
+      <div class="frame-nir">
+          <span class="p-float-label tva-input">
+            <input
+              id="float-input-tva"
+              type="number"
+              pInputText class="p-inputtext-sm tva-input-text"
+              formControlName="cotaTva"
+              prefix="RON"
+              disabled
+              style="width: 115px"
+            >
+            <label for="float-input-tva" class="val-factura">Cota TVA - 19%</label>
+          </span>
+      </div>
+
+      <div class="frame-nir">
+          <span class="p-float-label valoareStoc-input">
+            <input
+              id="float-input-valoareStoc"
+              type="number"
+              pInputText
+              class="p-inputtext-sm valoareStoc-input-text"
+              formControlName="pretVanzare"
+            >
+            <label for="float-input-valoareStoc" class="val-factura">Pret vanzare cu TVA</label>
+          </span>
+      </div>
+
+      <button
+        pButton
+        type="button"
+        class="val-button p-button-sm"
+        icon="pi pi-save"
+        label="Adauga"
+        (click)="onSubmit()"
+      ></button>
+    </div>
+  </div>
+  </form>
+
+  <p-table [value]="products" [columns]="cols" id="myTable" [scrollable]="true" scrollHeight="310px" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th>Nr. Crt</th>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-product>
+      <tr [pSelectableRow]="rowData">
+        <td>{{products.indexOf(product) + 1}}</td>
+        <td *ngFor="let col of columns">
+          {{ col.type ? col.type.transform(rowData[col.field]) : rowData[col.field] }}
+<!--          {{rowData[col.field]}}-->
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8" style="text-align: center; height: 80px">Adauga produse/servicii pe NIR completand datele de mai sus.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-divider></p-divider>
+
+  <div class="p-grid">
+    <div class="p-col-4">
+      <div class="frame-input">
+          <span class="text-el">
+            Mentiuni
+          </span>
+        <span class="val">
+          <input type="text" pInputText>
+        </span>
+      </div>
+      <div class="frame-input">
+          <span class="text-el">
+            Comentarii interne (nu apar pe doc)
+          </span>
+        <span class="val">
+          <input type="text" pInputText>
+        </span>
+      </div>
+    </div>
+
+    <div class="p-col-4">
+      <div class="frame-input">
+        <span class="text-el">
+          Comisia receptie
+        </span>
+        <span class="val">
+        <input type="text" pInputText>
+      </span>
+      </div>
+    </div>
+
+    <div class="p-col-4">
+      <div class="frame-input">
+        <span class="text-el">
+          Delegat
+        </span>
+        <span class="val">
+        <input type="text" pInputText>
+      </span>
+      </div>
+      <div class="frame-input">
+        <span class="text-el">
+          Auto
+        </span>
+        <span class="val">
+        <input type="text" pInputText>
+      </span>
+      </div>
+    </div>
+  </div>
+</p-card>

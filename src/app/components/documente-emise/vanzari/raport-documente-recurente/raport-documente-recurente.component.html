@@ -1,0 +1,36 @@
+<h2>Documente emise - facutri recurente</h2>
+
+<p-card>
+  <button
+    pButton
+    class="p-button-sm"
+    label="Factura recurenta"
+    icon="pi pi-plus"
+  >
+  </button>
+
+  <p-table [columns]="cols" id="myTable" [scrollable]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData">
+        <td *ngFor="let col of columns">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8" style="text-align: center; height: 80px">Emite prima ta cheltuiala.
+          <br>
+          <button pButton class="p-button-sm" label="Factura recurenta" icon="pi pi-plus"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

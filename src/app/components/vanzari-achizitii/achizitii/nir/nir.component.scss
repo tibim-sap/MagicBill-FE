@@ -1,0 +1,106 @@
+.frame-input {
+  display: flex;
+  align-items: center;
+}
+
+.text-el-factura, .val-factura{
+  //padding: 5px 15px 5px 10px;
+  font-size: 14px;
+}
+
+.text-el, .val {
+  padding: 5px 15px 5px 10px;
+}
+.text-el {
+  width: 30%;
+  font-size: 14px;
+}
+.val {
+  width: 70%;
+}
+
+.frame-adaugare-articol {
+  display: inline-flex;
+}
+
+.text-el-adaugare-articol {
+  font-size: 12px;
+}
+
+.frame-nir {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tabel-nir{
+  text-align: center;
+}
+
+// Adaugare produse in tabelul de NIR
+.gestiune-input{
+  margin-left: 10px;
+}
+
+.den-input{
+  margin-left: 10px;
+}
+
+.tip-input{
+  margin-left: 10px;
+}
+
+.um-input{
+  margin-left: 10px;
+}
+
+.cantDoc-input{
+  .cantDoc-input-text{
+    width: 115px;
+  }
+  margin-left: 10px;
+}
+
+.cant-primita-input{
+  .cant-primita-input-text{
+    width: 115px;
+  }
+  margin-left: 10px;
+}
+
+.pret-achizitie-input{
+  .pret-achizitie-input-text{
+    width: 115px;
+  }
+  margin-left: 10px;
+}
+
+.tva-input{
+  .tva-input-text{
+    width: 100px;
+  }
+  margin-left: 10px;
+}
+
+.valoareStoc-input{
+  .valoareStoc-input-text{
+    width: 140px;
+  }
+  margin-left: 10px;
+}
+
+.adaugare-nir-input{
+  margin-top: 12px;
+}
+
+.val-button {
+  float: right;
+}
+
+.detalii-furnizor-main{
+  .detalii-furnizor{
+    padding: 3px;
+    margin: 0;
+    font-size: 13px;
+  }
+  margin-left: 14px;
+}

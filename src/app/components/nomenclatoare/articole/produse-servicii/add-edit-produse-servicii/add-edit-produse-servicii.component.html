@@ -1,0 +1,72 @@
+<div class="form-group row">
+  <div class="p-grid">
+    <div class="p-col-6">
+      <div class="frame-input">
+          <span class="text-el">
+            Denumire produs/serviciu
+          </span>
+        <span class="val">
+            <input type="text" class="form-control" [(ngModel)]="denumireProdusServiciu" pInputText>
+          </span>
+      </div>
+      <div class="frame-input">
+          <span class="text-el">
+          Tip
+          </span>
+        <span class="val">
+          <select class="form-control" [(ngModel)]="tip">
+            <option value="" selected disabled hidden>Selecteaza tipul</option>
+            <option value="Servicii">Servicii</option>
+            <option value="Produse">Produse</option>
+          </select>
+        </span>
+      </div>
+      <div class="frame-input">
+          <span class="text-el">
+          Pret Standard
+        </span>
+        <span class="val">
+          <input type="text" class="form-control" [(ngModel)]="pretStandard" pInputText>
+        </span>
+      </div>
+    </div>
+    <div class="p-col-6">
+      <div class="frame-input">
+          <span class="text-el">
+          U.M.
+        </span>
+        <span class="val">
+          <input type="text" class="form-control" [(ngModel)]="um" pInputText>
+        </span>
+      </div>
+      <div class="frame-input">
+          <span class="text-el">
+          Moneda
+          </span>
+        <span class="val">
+          <select class="form-control" [(ngModel)]="moneda">
+            <option value="" selected disabled hidden>Selecteaza moneda</option>
+            <option value="RON">RON - Leu</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="USD">USD - Dolar</option>
+            <option value="GBP">GBP - Lira sterlina</option>
+            <option value="CAD">CAD - Dolar canadian</option>
+            <option value="AUD">AUD - Dolar australian</option>
+            <option value="CHF">CHF - Franc elvetian</option>
+            <option value="TRY">TRY - Lira turceasca</option>
+            <option value="CZK">CZK - Coroana ceheasca</option>
+            <option value="DKK">DKK - Coroana daneza</option>
+          </select>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button (click)="addProdusServiciu()" *ngIf="prodServ.produsServiciuId == 0" class="btn btn-primary">
+  Add
+</button>
+
+<button (click)="updateProdusServiciu()" *ngIf="prodServ.produsServiciuId != 0" class="btn btn-primary">
+  Update
+</button>

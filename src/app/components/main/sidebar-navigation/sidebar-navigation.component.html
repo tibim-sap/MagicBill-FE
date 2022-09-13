@@ -1,0 +1,89 @@
+<div class="sidebar-wrapper">
+  <h1>MagicBill</h1>
+  <p-divider></p-divider>
+  <p-button class="buxttonStyleMenu" routerLink="/dashboard" type="text" icon="pi pi-home" label="Dashboard"></p-button>
+
+  <p-sidebar [(visible)]="display1" class="sidebar-submenu--custom" [dismissible]="true">
+    <h3>Vanzari</h3>
+    <p-divider></p-divider>
+    <div class="p-mb-3 p-text-left"><a (click)="display1=false" class="sidebarMenuText" routerLink="/factura">Factura</a></div>
+<!--    <div class="p-mb-3 p-text-left"><a (click)="display1=false" class="sidebarMenuText" routerLink="/bon-fiscal">Bon Fiscal</a></div>-->
+    <div class="p-mb-3 p-text-left"><a (click)="display1=false" class="sidebarMenuText" routerLink="/factura-storno">Factura storno</a></div>
+    <div class="p-mb-3 p-text-left"><a (click)="display1=false" class="sidebarMenuText" routerLink="/factura-proforma">Factura proforma</a></div>
+    <h3>Achizitii</h3>
+    <p-divider></p-divider>
+    <div class="p-mb-3 p-text-left"><a (click)="display1=false" class="sidebarMenuText" routerLink="/nir">Receptie de la furnizor (NIR)</a></div>
+<!--    <div class="p-mb-3 p-text-left"><a (click)="display1=false" class="sidebarMenuText" routerLink="/retur-furnizor">Retur la furnizor</a></div>-->
+    <div class="p-mb-3 p-text-left"><a (click)="display1=false" class="sidebarMenuText" routerLink="/cheltuieli">Cheltuiala</a></div>
+<!--    <h3>Documente recurente - FEATURE</h3>-->
+<!--    <p-divider></p-divider>-->
+<!--    <div class="p-mb-3 p-text-left"><a (click)="display1=false" class="sidebarMenuText" routerLink="/facturi">Facturi - FEATURE</a></div>-->
+<!--    <div class="p-mb-3 p-text-left"><a (click)="display1=false" class="sidebarMenuText" routerLink="/proforma">Proforme - FEATURE</a></div>-->
+  </p-sidebar>
+  <p-button type="text" class="buxttonStyleMenu" (click)="display1 = true" icon="pi pi-shopping-cart" label="Vanzari si achizitii"></p-button>
+
+  <p-sidebar [(visible)]="display6" class="sidebar-submenu--custom" >
+    <h3>Tranzactii pe stoc</h3>
+    <p-divider></p-divider>
+    <div class="p-mb-3 p-text-left"><a (click)="display6=false" class="sidebarMenuText" routerLink="/tranzacti-pe-stoc/ajustare-stoc">Ajustare stoc</a></div>
+    <div class="p-mb-3 p-text-left"><a (click)="display6=false" class="sidebarMenuText" routerLink="/tranzacti-pe-stoc/inventar">Inventar</a></div>
+  </p-sidebar>
+  <p-button type="text" class="buxttonStyleMenu" (click)="display6 = true" icon="pi pi-chart-line" label="Tranzactii pe stoc"></p-button>
+
+  <p-sidebar [(visible)]="display2" class="sidebar-submenu--custom" >
+    <h3>Incasari si plati</h3>
+    <p-divider></p-divider>
+    <div class="p-mb-3 p-text-left"><a (click)="display2=false" class="sidebarMenuText" routerLink="/incasari-plati">Incasare (chitanta, OP si altele)</a></div>
+    <div class="p-mb-3 p-text-left"><a (click)="display2=false" class="sidebarMenuText" routerLink="/plata-factura-furnizor">Plata factura furnizor</a></div>
+  </p-sidebar>
+  <p-button type="text" class="buxttonStyleMenu" (click)="display2 = true" icon="pi pi-money-bill" label="Incasari si plati"></p-button>
+
+  <p-sidebar [(visible)]="display3" class="sidebar-submenu--custom" >
+    <h3>Vanzari</h3>
+    <p-divider></p-divider>
+    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/facturi">Facturi</a></div>
+    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/incasari">Incasari</a></div>
+    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/proforme">Proforme</a></div>
+<!--    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/abonament">Documente recurente</a></div>-->
+    <h3>Achizitii</h3>
+    <p-divider></p-divider>
+    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/documente-furnizori">Documente furnizori</a></div>
+    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/note-intrare-receptie">Receptii de la furnizori</a></div>
+    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/plati">Plati</a></div>
+    <h3>Tranzactii pe stoc</h3>
+    <p-divider></p-divider>
+<!--    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/bonuri-cosum">Bonuri de consum - FEATURE</a></div>-->
+<!--    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/transferuri">Transferuri - FEATURE</a></div>-->
+<!--    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/modificari-de-pret">Modificari de preturi - FEATURE</a></div>-->
+    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/ajustari-de-stoc">Ajustari de stoc</a></div>
+    <div class="p-mb-3 p-text-left"><a (click)="display3=false" class="sidebarMenuText" routerLink="/raport/inventare">Inventare</a></div>
+  </p-sidebar>
+  <p-button type="text" class="buxttonStyleMenu" (click)="display3 = true" icon="pi pi-file" label="Documente emise"></p-button>
+
+<!--  <p-sidebar [(visible)]="display4" class="sidebar-submenu&#45;&#45;custom" >-->
+<!--  <h3>Rapoarte</h3>-->
+<!--    <p-divider></p-divider>-->
+<!--  <div class="p-mb-3 p-text-left"><a (click)="display4=false" class="sidebarMenuText" routerLink="">Toate rapoartele</a></div>-->
+<!--  </p-sidebar>-->
+<!--  <p-button type="text" class="buxttonStyleMenu" (click)="display4 = true" icon="pi pi-chart-line" label="Rapoarte"></p-button>-->
+
+  <p-sidebar [(visible)]="display5" modal="false" class="sidebar-submenu--custom" >
+    <h3>Articole</h3>
+    <p-divider></p-divider>
+    <div class="p-mb-3 p-text-left"><a (click)="display5=false" class="sidebarMenuText" routerLink="/nomenclator/produse-servicii">Produse/Servicii</a></div>
+    <div class="p-mb-3 p-text-left"><a (click)="display5=false" class="sidebarMenuText" routerLink="/nomenclator/gestiuni">Gestiuni</a></div>
+    <div class="p-mb-3 p-text-left"><a (click)="display5=false" class="sidebarMenuText" routerLink="/nomenclator/categorii-cheltuiala">Categorii cheltuieli</a></div>
+<!--    <h3>Preturi - FEATURE</h3>-->
+<!--    <p-divider></p-divider>-->
+<!--    <div class="p-mb-3 p-text-left"><a (click)="display5=false" class="sidebarMenuText" routerLink="/nomenclator/lista-preturi">Lista de preturi si gestiuni - FEATURE</a></div>-->
+    <h3>Parteneri</h3>
+    <p-divider></p-divider>
+    <div class="p-mb-3 p-text-left"><a (click)="display5=false" class="sidebarMenuText" routerLink="/nomenclator/clienti">Clienti</a></div>
+    <div class="p-mb-3 p-text-left"><a (click)="display5=false" class="sidebarMenuText" routerLink="/nomenclator/furnizori">Furnizori</a></div>
+  </p-sidebar>
+  <p-button class="buxttonStyleMenu" type="text" (click)="display5 = true" icon="pi pi-list" label="Nomenclatoare"></p-button>
+  <p-divider></p-divider>
+
+  <p>Copyright @2020 Tiberiu Manolescu</p>
+</div>
+

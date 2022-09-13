@@ -1,0 +1,90 @@
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn btn-primary float-right m-2"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+  (click)="addClick()"
+  data-backdrop="static"
+  data-keyboard="false"
+>Adauga furnizor</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeClick()"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-furnizori [furn]="furn" *ngIf="ActivateAddEditFurnComp"></app-add-edit-furnizori>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Tabel-->
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Furnizor Id</th>
+      <th>Denumire furnizor</th>
+      <th>CIF</th>
+      <th>Cod client</th>
+      <th>Telefon</th>
+      <th>Email</th>
+      <th>Persoana Contact</th>
+      <th>Actiuni</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dataItem of FurnizoriList">
+      <td>{{dataItem.FurnizoriId}}</td>
+      <td>{{dataItem.denumireFurnizor}}</td>
+      <td>{{dataItem.cif}}</td>
+      <td>{{dataItem.codClient}}</td>
+      <td>{{dataItem.telefon}}</td>
+      <td>{{dataItem.email}}</td>
+      <td>{{dataItem.persoanaContact}}</td>
+      <td>
+        <button
+          pButton
+          pRipple
+          icon="pi pi-pencil"
+          class="p-button-rounded p-button-success p-mr-2"
+          (click)="editClick(dataItem)"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        ></button>
+        <button
+          pButton
+          pRipple
+          icon="pi pi-trash"
+          class="p-button-rounded p-button-warning"
+          (click)="deleteClick(dataItem)"
+        ></button>
+<!--        <button-->
+<!--          type="button"-->
+<!--          class="btn btn-light mr-1"-->
+<!--          data-bs-toggle="modal"-->
+<!--          data-bs-target="#exampleModal"-->
+<!--          (click)="editClick(dataItem)"-->
+<!--          data-backdrop="static"-->
+<!--          data-keyboard="false"-->
+<!--        >Edit</button>-->
+<!--        <button-->
+<!--          type="button"-->
+<!--          class="btn btn-light mr-1"-->
+<!--          data-toggle="modal"-->
+<!--          data-target="#exampleModal"-->
+<!--          data-backdrop="static"-->
+<!--          data-keyboard="false"-->
+<!--          (click)="deleteClick(dataItem)"-->
+<!--        >Delete</button>-->
+      </td>
+    </tr>
+  </tbody>
+</table>

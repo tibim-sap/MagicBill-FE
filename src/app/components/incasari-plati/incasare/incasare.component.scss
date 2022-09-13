@@ -1,0 +1,37 @@
+.frame-incasare{
+  display: flex;
+  align-items: center;
+}
+
+.text-el, .val{
+  padding: 5px 15px 5px 10px;
+  font-size: 14px;
+}
+
+.text-el {
+  width: 30%;
+
+}
+.val {
+  width: 70%;
+}
+
+// Adaugare produse in tabelul de facturare
+.incasare-input{
+  .incasare-input-text{
+    width: 300px;
+  }
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.um-input{
+  .incasare-drop-input-text{
+    width: 75px;
+  }
+  margin-left: 10px;
+}
+
+//.val-button{
+//  float: right;
+//}
